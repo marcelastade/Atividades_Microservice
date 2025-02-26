@@ -48,7 +48,7 @@ function tratarDados(data) {
 }
 
 function consumirAPI() {
-    fetch("http://demo8941161.mockable.io/mensagem")
+    fetch("http://demo1510601.mockable.io/mensagem")
         .then(response => response.json())
         .then(data => tratarDados(data))
         .catch(error => console.log(error))
