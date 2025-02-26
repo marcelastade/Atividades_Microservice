@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const footer = document.querySelector("footer");
 
     btn.addEventListener("click", function () {
-        // Alternar entre duas cores
+       
         if (header.classList.contains("color-pink")) {
             header.classList.remove("color-pink");
             footer.classList.remove("color-pink");
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const li = document.createElement("li");
         li.textContent = text;
         
-        // Remove ao clicar duas vezes
+       
         li.addEventListener("dblclick", function () {
             li.remove();
         });
@@ -55,7 +55,7 @@ function consumirAPI() {
 }
 
 document.getElementById("dataForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita o envio padrão do formulário
+    event.preventDefault(); 
 
     let nomeInput = document.getElementById("nome");
     let emailInput = document.getElementById("email");
@@ -64,14 +64,12 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
     let erroNome = document.getElementById("erro-nome");
     let erroEmail = document.getElementById("erro-email");
 
-    // Resetando mensagens de erro
     erroNome.textContent = "";
     erroEmail.textContent = "";
     responseMessage.textContent = "";
 
     let formularioValido = true;
 
-    // Validação dos campos
     if (nomeInput.value.trim() === "") {
         erroNome.textContent = "Preencha esse campo!";
         formularioValido = false;
@@ -82,16 +80,13 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
         formularioValido = false;
     }
 
-    // Se houver erro, para a execução
     if (!formularioValido) return;
-
-    // Criando o objeto de dados para envio
+    
     const dados = {
         nome: nomeInput.value.trim(),
         email: emailInput.value.trim()
     };
 
-    // Envio dos dados para a API
     fetch("http://demo1510601.mockable.io/enviar", {
         method: 'POST',
         headers: {
@@ -112,13 +107,13 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
 });
 
 
-let produtos = []; // Variável global para armazenar os produtos
+let produtos = [];
 
 function carregarProdutos() {
     fetch("http://demo1510601.mockable.io/lista") 
     .then(response => response.json())
     .then(data => {
-        produtos = data; // Armazena os produtos na variável global
+        produtos = data; 
         const tabela = document.getElementById("tabelaProdutos");
         tabela.innerHTML = ""; 
         
