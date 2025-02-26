@@ -4,7 +4,7 @@ function carregarUsuarios() {
     fetch("http://demo1510601.mockable.io/listaUsuarios") 
     .then(response => response.json())
     .then(data => {
-        usuarios = data; // Armazena os usuários do GET
+        usuarios = data;
         atualizarTabela();
     })
     .catch(error => console.error("Erro ao buscar usuários:", error));
@@ -28,7 +28,7 @@ function atualizarTabela() {
 
 
 document.getElementById("dataForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita o envio padrão do formulário
+    event.preventDefault(); 
 
     let nomeInput = document.getElementById("nome");
     let emailInput = document.getElementById("email");
@@ -41,8 +41,6 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
     let erroData = document.getElementById("erro-data");
     let erroIdade = document.getElementById("erro-idade");
 
-
-    // Resetando mensagens de erro
     erroNome.textContent = "";
     erroEmail.textContent = "";
     erroData.textContent = "";
@@ -51,7 +49,6 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
 
     let formularioValido = true;
 
-    // Validação dos campos
     if (nomeInput.value.trim() === "") {
         erroNome.textContent = "Preencha esse campo!";
         formularioValido = false;
@@ -71,10 +68,9 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
         erroIdade.textContent = "Preencha esse campo!";
         formularioValido = false;
     }
-    // Se houver erro, para a execução
+
     if (!formularioValido) return;
 
-    // Criando o objeto de dados para envio
     const dados = {
         nome: nomeInput.value.trim(),
         email: emailInput.value.trim(),
@@ -82,7 +78,6 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
         idade: parseInt(idadeInput.value.trim(), 10)
     };
 
-    // Envio dos dados para a API
     fetch("http://demo1510601.mockable.io/enviar", {
         method: 'POST',
         headers: {
@@ -100,10 +95,8 @@ document.getElementById("dataForm").addEventListener("submit", function(event) {
          dataInput.value = "";
          idadeInput.value = "";
          
-          // Adiciona o novo usuário localmente
         usuarios.push(dados);
 
-        // Atualiza a tabela com os novos dados
         atualizarTabela();
 
     })
