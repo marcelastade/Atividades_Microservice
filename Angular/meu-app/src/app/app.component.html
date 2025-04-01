@@ -1,0 +1,17 @@
+<h2>Marcela Stade Carvalho</h2>
+<h3>RM 552372</h3>
+
+<h2>Chamando o componente first-component</h2>
+<app-first-component></app-first-component>
+
+<h2>Usando *ngIf na Sintaxe Tradicional</h2>
+<p *ngIf="status === 'sucesso'">Operação bem-sucedida!</p>
+<p *ngIf="status !== 'sucesso'">Ocorreu um erro!</p>
+
+<h2>Usando *ngIf na Sintaxe Angular 17+</h2>
+@if (status === 'sucesso') {
+  <p>Operação bem-sucedida!</p>
+} @else {
+  <p>Ocorreu um erro!</p>
+}
+

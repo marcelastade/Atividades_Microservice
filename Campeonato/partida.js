@@ -7,14 +7,27 @@ var partidas = JSON.parse(localStorage.getItem("partidas") || "[]");
 function capturaCampeonato() {
     campeonato.innerHTML = "";
     campeonatos.forEach((c) => {
+<<<<<<< HEAD
         campeonato.innerHTML += `
       <option>${c.nome}</option>
+=======
+<<<<<<< HEAD
+        campeonato.innerHTML += `
+      <option>${c.nome}</option>
+=======
+        campeonato.innerHTML += `
+      <option>${c.nome}</option>
+>>>>>>> e27f5fa (Primeiro commit na branch main)
+>>>>>>> ae91f15 (Corrigindo estrutura da pasta Angular no repositório)
     `;
     });
 }
 function atualizarTabelaP() {
     tabelaPartidas.innerHTML = "";
     partidas.forEach((p) => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
         tabelaPartidas.innerHTML += `
       <tr>
           <td>${p.timeMandante}</td>
@@ -22,6 +35,19 @@ function atualizarTabelaP() {
           <td>${p.campeonato}</td>
           <td>${p.data}</td>
       </tr>
+=======
+>>>>>>> ae91f15 (Corrigindo estrutura da pasta Angular no repositório)
+        tabelaPartidas.innerHTML += `
+      <tr>
+          <td>${p.timeMandante}</td>
+          <td>${p.timeVisitante}</td>
+          <td>${p.campeonato}</td>
+          <td>${p.data}</td>
+      </tr>
+<<<<<<< HEAD
+=======
+>>>>>>> e27f5fa (Primeiro commit na branch main)
+>>>>>>> ae91f15 (Corrigindo estrutura da pasta Angular no repositório)
     `;
     });
 }

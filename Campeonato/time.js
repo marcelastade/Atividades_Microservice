@@ -5,11 +5,25 @@ var times = JSON.parse(localStorage.getItem("times") || "[]");
 function atualizarTabelaT() {
     tabelaTimes.innerHTML = "";
     times.forEach((t) => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
         tabelaTimes.innerHTML += `
       <tr>
           <td>${t.time}</td>
           <td>${t.timeCurto}</td>
       </tr>
+=======
+>>>>>>> ae91f15 (Corrigindo estrutura da pasta Angular no repositório)
+        tabelaTimes.innerHTML += `
+      <tr>
+          <td>${t.time}</td>
+          <td>${t.timeCurto}</td>
+      </tr>
+<<<<<<< HEAD
+=======
+>>>>>>> e27f5fa (Primeiro commit na branch main)
+>>>>>>> ae91f15 (Corrigindo estrutura da pasta Angular no repositório)
     `;
     });
 }

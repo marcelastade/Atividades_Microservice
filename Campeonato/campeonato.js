@@ -6,6 +6,9 @@ var campeonatos = JSON.parse(localStorage.getItem("campeonatos") || "[]");
 function atualizarTabela() {
     tabelaCampeonato.innerHTML = "";
     campeonatos.forEach((c) => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
         tabelaCampeonato.innerHTML += `
     <tr>
         <td>${c.nome}</td>
@@ -18,6 +21,24 @@ function atualizarTabela() {
           <button onclick = "removerCampeonato(${c.id})"> Remover </button> 
         </td>
     </tr>
+=======
+>>>>>>> ae91f15 (Corrigindo estrutura da pasta Angular no repositório)
+        tabelaCampeonato.innerHTML += `
+    <tr>
+        <td>${c.nome}</td>
+        <td>${c.categoria}</td>
+        <td>${c.tipo}</td>
+        <td>${c.dataInicio}</td>
+        <td>${c.dataFim}</td>
+        <td>
+          <button onclick = "editarCampeonato(${c.id})" > Editar </button>
+          <button onclick = "removerCampeonato(${c.id})"> Remover </button> 
+        </td>
+    </tr>
+<<<<<<< HEAD
+=======
+>>>>>>> e27f5fa (Primeiro commit na branch main)
+>>>>>>> ae91f15 (Corrigindo estrutura da pasta Angular no repositório)
   `;
     });
 }
