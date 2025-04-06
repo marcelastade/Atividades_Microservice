@@ -1,0 +1,84 @@
+:root {
+    --color-light: #FEFCFB;
+    --color-orange: #F5821F;
+    --font-primary: "Rubik", sans-serif;
+    --pink: rgb(185, 27, 106);
+}
+
+
+body {
+    background-color: var(--color-light) !important;
+    font-family: var(--font-primary) !important;
+}
+
+header {
+    width: 100%; 
+}
+
+.pink {
+    color: var(--pink);
+}
+
+.btn-pink {
+    background-color: rgb(185, 27, 106) !important;
+    border: none !important;
+    color: var(--color-light);
+}
+
+.btn-pink:hover, .btnItem:hover, .btnEnviar:hover {
+    background-color: rgb(204, 53, 118) !important; /* Cor alterada no hover */
+    color: white !important; /* Mantém o texto visível */
+}
+
+
+.color-light {
+    background-color: #FEFCFB !important;
+}
+
+.color-pink {
+    background-color: pink !important;
+}
+
+.input, .inputmens, .inputnome, .inputemail {
+    border: none;
+    background-color: #d6d4d4;
+    padding: 0.7rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra discreta */
+}
+.inputmens {    
+    width: 20rem;
+}
+
+.inputnome, .inputemail {
+    width: 15rem;
+}
+
+.btnEnviar {
+    width: 8rem;
+}
+
+#itemInput:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra suave ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+.btnItem, .btnEnviar {
+    background-color: rgb(204, 53, 118) !important; /* Cor alterada no hover */
+    border: none; 
+    padding: 0.7rem;
+    border-radius: 0.7rem;
+    color: var(--color-light);
+}
+
+#itemList {
+    margin-top: 1rem;
+}
+
+.erro {
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
