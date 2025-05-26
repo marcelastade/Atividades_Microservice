@@ -1,0 +1,175 @@
+Conceitos Angular:
+
+Angular é um framework construído em Typescript (mantido pela Microsoft) e baseada em componentes.
+
+Componentes: cada componente representa uma parte visual da aplicação
+para criar: ng g component componentes/nome-do-component
+SEMPRE IMPORTAR NO ARQUIVO APP-COMPONENT.TS
+
+Serviços: usados para organizar, compartilhar lógica de negócio ou dados entre os componentes
+
+Módulos: servem para organizar a aplicação, sempre começa com o AppModule, mas podem ser criados outros para separar funcionalidades.
+
+Interfaces: igual uma classe java, onde define atributos para aquele objeto em específico. 
+
+Services: armazena o consumo de APIs, injeção de dependência, além de facilitar a integração das diferentes partes da aplicação 
+Para criar uma service: ng g services/nome-da-service 
+
+import { HttpClient} from '@angular/common/http'; 
+import { Observable } from 'rxjs'; 
+private apiUrl = 'http://localhost:3000/clientes'; //URL da API 
+constructor(private http: HttpClient) {
+
+}
+
+//método para retornar a lista de clientes GET 
+list(): Observable<Cliente[]> {
+return this.http.get<Cliente[]>(this.apiUrl) as Observable<Cliente[]>; 
+}
+
+Observable: lida com solicitações HTTP
+no arquivo component:
+clientes: Cliente[] = []; //criar uma lista de clientes 
+constructor(private clienteService: ClienteService) { 
+} 
+//método para listar os clientes list(): void { 
+this.clienteService.list().subscribe((clientes) => (this.clientes = clientes)); 
+}
+
+Subscribe: usado para receber valores de um observable, lidar com erros e ser notificado quando o observable é concluído 
+
+
+Rotas: navegação entre uma página e outra (sempre deixar o app-route referenciado no app-component.html)
+no app-route.ts se declara assim: 
+{ path: 'first-component', component: AboutComponent },
+{ path: '**', component: HomeComponent } /*Qualquer rota não encontrada se
+
+Navbar: ng g c navbar --skip-tests
+
+Standalone: reduz a quantidade de código repetitivo e a dependência do NgModules
+
+Criando API:
+npm i json-server
+na raiz do projeto, criar um db.json para simular uma api
+no arquivo packege.json, na parte de scripts, inserir "server": "json-server --watch db.json"
+no app-config.ts, inserir:
+import { provideHttpClient } from '@angular/common/http';
+export const appConfig: ApplicationConfig = { providers: [provideRouter(routes), provideClientHydration(), provideHttpClient()};
+abrir um terminal separado da aplicação e executar npm run server
+
+para iniciar uma aplicação angular: 
+
+ng new nome-da-aplicação
+CSS
+y
+y
+ng serve
+
+Diretivas: são marcadores que ditam o comportamento de componentes ou elementos HTML. Temos 3 tipos: 
+- NgClass: aplica classes CSS condicionalmente a elementos com base em expressões Angular
+Para utilizá-la, sempre importamos o import { CommonModule } from '@angular/common'; dentro do app-component.ts
+
+import { CommonModule } from '@angular/common';
+@Component({
+  selector: 'app-directives',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './directives.component.html',
+  styleUrl: './directives.component.css'
+})
+export class DirectivesComponent {
+  isActive = true;
+  hasError = true
+  classes =["text-success", "text-danger", "text-special"]
+  isSpecial = true; 
+}
+
+app.componet.html
+
+<h2>Diretiva de classe</h2>
+
+<p [ngClass]="{ 'errorClass': hasError }">Estilo com ngClass</p>
+
+<p [ngClass]="classes">Texto com sucesso</p>
+
+<hr>
+
+<!-- toggle the "special" class on/off with a property -->
+<div [ngClass]="isSpecial ? 'special' : ''">This div is special</div>
+
+- NgStyle: aplica estilos CSS inline a elementos condicionalmente com base em expressões Angular.
+Para utilizá-la, sempre importamos o import { CommonModule } from '@angular/common'; dentro do app-component.ts 
+
+import { CommonModule } from '@angular/common';
+@Component({
+  selector: 'app-directives',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './directives.component.html',
+  styleUrl: './directives.component.css'
+})
+
+app.component.ts
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+@Component({
+  selector: 'app-directives',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './directives.component.html',
+  styleUrl: './directives.component.css'
+})
+export class DirectivesComponent {
+  size = 50;
+  font = 'Arial';
+  color = 'yellow';
+}
+
+app.component.html
+
+<h2>Diretiva de estilo inline</h2>
+
+<p [ngStyle]="{'background-color': color, 'font-size': size + 'px', 'color' : 'red'}">Estilo com ngStyle</p>
+
+- NgModel: mostrar e atualizar propriedades 
+Para utilizá-lo, sempre importamos o FormsModule dentro do app-component.ts 
+
+//ngModel
+  currentItem: any = {
+    name: ''
+  };
+
+  setUppercaseName(value: string) {
+    this.currentItem.name = value.toUpperCase();
+  }
+
+app.component.html
+
+<h3>NgModel</h3>
+<label for="example-ngModel">[(ngModel)]:</label>
+<input [(ngModel)]="currentItem.name" id="example-ngModel">
+
+<p>Campo: {{ currentItem.name }}</p>
+<p>Uppercas: <input [ngModel]="currentItem.name" (ngModelChange)="setUppercaseName($event)" id="example-uppercase"></p>
+
+
+Comandos GIT:
+
+configurando nome: git config --global user.name "marcelastade"
+configurando e-mail: git config --global user.email "marcela.stade@gmail.com"
+
+git init - inicia o git no repositório local
+git remote add origin (url do repositório.git) - clona o repositório
+git pull origin main
+git add . - adiciona todos os arquivos ao repositório local
+git status - verifica o estado dos arquivos
+git commit -m "texto que desejar" - registra o commit
+git push origin main - sobe o commit local para o GitHub
+
+git branch "nome da branch" - criar branch
+git branch -D "nome da branch" - excluir branch
+git checkout "nome da branch" - selecionar a branch que deseja trabalhar
+
+
+
